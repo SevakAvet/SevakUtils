@@ -5,13 +5,13 @@ import java.util.Arrays;
 
 public class ArrayProcessing {
 	
-	public static int[][] shift(int[][] originalArr, Shift shift, int howMuch) {
+	public static int[][] shift(int[][] source, Shift shift, int howMuch) {
 		if(howMuch < 0) {
 			throw new IllegalArgumentException("Shift size must be not null!");
 		}
 		
-		int column = originalArr[0].length;
-		int row = originalArr.length;
+		int row = source.length;
+		int column = source[0].length;
 
 		int[][] newArr = new int[row][column];	
 
@@ -22,49 +22,93 @@ public class ArrayProcessing {
 		}
 		
 		if(howMuch == 0) {
-			return originalArr;
+			return source;
 		}
 		
 		switch (shift) {
 		case LEFT:
-			for (int i=0; i<originalArr.length; ++i) {
-				System.arraycopy(originalArr[i], howMuch, newArr[i], 0, originalArr[i].length - howMuch);
-				System.arraycopy(originalArr[i], 0, newArr[i], originalArr[i].length - howMuch, howMuch);
+			for (int i=0; i<source.length; ++i) {
+				System.arraycopy(source[i], howMuch, newArr[i], 0, source[i].length - howMuch);
+				System.arraycopy(source[i], 0, newArr[i], source[i].length - howMuch, howMuch);
 			}
 			
 			break;
 
 		case RIGHT:			
-			for (int i=0; i<originalArr.length; ++i) {
-				System.arraycopy(originalArr[i], originalArr[i].length - howMuch, newArr[i], 0, howMuch);
-				System.arraycopy(originalArr[i], 0, newArr[i], howMuch, originalArr[i].length - howMuch);
+			for (int i=0; i<source.length; ++i) {
+				System.arraycopy(source[i], source[i].length - howMuch, newArr[i], 0, howMuch);
+				System.arraycopy(source[i], 0, newArr[i], howMuch, source[i].length - howMuch);
 			}
 			
 			break;
 
 		case UP:			
 			for(int i=0; i<howMuch; ++i) {
-				newArr[originalArr.length - howMuch + i] = Arrays.copyOf(originalArr[i], originalArr[i].length);
+				newArr[source.length - howMuch + i] = Arrays.copyOf(source[i], source[i].length);
 			}
 			
-			for(int i=howMuch; i<originalArr.length; ++i) {
-				newArr[i - howMuch] = Arrays.copyOf(originalArr[i], originalArr[i].length);
+			for(int i=howMuch; i<source.length; ++i) {
+				newArr[i - howMuch] = Arrays.copyOf(source[i], source[i].length);
 			}
 			
 			break;
 
 		case DOWN:			
-			for(int i=0; i<originalArr.length - howMuch; ++i) {
-				newArr[i + howMuch] = Arrays.copyOf(originalArr[i], originalArr[i].length);
+			for(int i=0; i<source.length - howMuch; ++i) {
+				newArr[i + howMuch] = Arrays.copyOf(source[i], source[i].length);
 			}
 			
-			for(int i = originalArr.length - howMuch; i<originalArr.length; ++i) {
-				newArr[i - originalArr.length + howMuch] = Arrays.copyOf(originalArr[i], originalArr[i].length);
+			for(int i = source.length - howMuch; i<source.length; ++i) {
+				newArr[i - source.length + howMuch] = Arrays.copyOf(source[i], source[i].length);
 			}
 			
 			break;
 		}
 
+		return newArr;
+	}
+	
+	public static int[][] turn(int[][] source, Turn turn) {
+		int row = source.length;
+		int column = source[0].length;
+		int currentI = 0;
+		int currentJ = 0;
+		
+		int[][] newArr = new int[row][column];
+		
+		
+		switch (turn) {
+		case LEFT:
+			for(int j=column-1; j>=0; --j) {
+				for(int i=0; i<row; ++i){
+					newArr[currentJ][currentI] = source[i][j];
+					
+					if(currentI + 1 < row) {
+						++currentI;
+					} else {
+						currentI = 0;
+						++currentJ;
+					}
+				}
+			}
+			break;
+
+		case RIGHT:
+			for(int i=0; i<row; ++i) {
+				for(int j=column-1; j>=0; --j) {
+					newArr[currentJ][currentI] = source[j][i];
+					
+					if(currentI + 1 < row) {
+						++currentI;
+					} else {
+						currentI = 0;
+						++currentJ;
+					}
+				}
+			}
+			break;
+		}
+		
 		return newArr;
 	}
 }

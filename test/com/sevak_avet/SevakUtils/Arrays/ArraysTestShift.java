@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import com.sevak_avet.SevakUtils.Shift;
 
-public class ArraysTest {
+public class ArraysTestShift {
 	
 	int[][] array = {{ 1, 2, 3, 4 }, 
 					 { 5, 6, 7, 8 },
