@@ -10,17 +10,35 @@ public class Check {
 
 		return Arrays.equals(a, newA);
 	}
-	
+
 	public static boolean isSorted2(int[] a) {
 		int[] newA = Arrays.copyOf(a, a.length);
 		Arrays.sort(newA);
-		
-		for(int i=0; i<a.length; ++i) {
-			if(a[i] != newA[i]) {
+
+		for (int i = 0; i < a.length; ++i) {
+			if (a[i] != newA[i]) {
 				return false;
 			}
 		}
-		
+
+		return true;
+	}
+
+	public static boolean isSorted(int[] a, boolean reversed) {
+		if (reversed == false) {
+			for (int i = 0; i < a.length - 1; ++i) {
+				if (a[i] > a[i + 1]) {
+					return false;
+				}
+			}
+		} else {
+			for (int i = 0; i < a.length - 1; ++i) {
+				if (a[i] < a[i + 1]) {
+					return false;
+				}
+			}
+		}
+
 		return true;
 	}
 }
