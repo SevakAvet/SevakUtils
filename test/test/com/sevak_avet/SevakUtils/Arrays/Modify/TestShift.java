@@ -1,13 +1,12 @@
-package com.sevak_avet.SevakUtils.Arrays;
+package test.com.sevak_avet.SevakUtils.Arrays.Modify;
 
-import static com.sevak_avet.SevakUtils.ArrayProcessing.shift;
 import static org.junit.Assert.*;
+import static com.sevak_avet.SevakUtils.Arrays.Modify.*;
 
 import org.junit.Test;
+import com.sevak_avet.SevakUtils.Arrays.Enums.Shift;
 
-import com.sevak_avet.SevakUtils.Shift;
-
-public class ArraysTestShift {
+public class TestShift {
 	
 	int[][] array = {{ 1, 2, 3, 4 }, 
 					 { 5, 6, 7, 8 },

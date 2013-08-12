@@ -1,12 +1,13 @@
-package com.sevak_avet.SevakUtils.Arrays;
+package test.com.sevak_avet.SevakUtils.Arrays.Modify;
 
 import static org.junit.Assert.*;
-import static com.sevak_avet.SevakUtils.ArrayProcessing.*;
+import static com.sevak_avet.SevakUtils.Arrays.Modify.*;
 
 import org.junit.Test;
-import com.sevak_avet.SevakUtils.Turn;
 
-public class ArrayTestRotate {
+import com.sevak_avet.SevakUtils.Arrays.Enums.Turn;
+
+public class TestRotate {
 	int[][] test = {{ 1, 2, 3 },
 					{ 4, 5, 6 },
 					{ 7, 8, 9 }};

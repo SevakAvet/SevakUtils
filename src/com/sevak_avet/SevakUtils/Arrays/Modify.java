@@ -1,9 +1,12 @@
-package com.sevak_avet.SevakUtils;
+package com.sevak_avet.SevakUtils.Arrays;
 
 import java.util.Arrays;
 
+import com.sevak_avet.SevakUtils.Arrays.Enums.Shift;
+import com.sevak_avet.SevakUtils.Arrays.Enums.Turn;
 
-public class ArrayProcessing {
+
+public class Modify {
 	
 	public static int[][] shift(int[][] source, Shift shift, int howMuch) {
 		if(howMuch < 0) {
